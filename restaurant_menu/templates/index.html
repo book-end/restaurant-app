@@ -6,6 +6,14 @@
   </head>
   <body>
     <h1>Menu</h1>
-    <h3>{{ item }}</h3>
+
+    <!--comes from views.py, get the uppercase meal category-->
+    {% for meal in meals %}
+    <h2>{{ meal.1 }}</h2>
+    {% for row in item_list %}
+    <!-- item_list is special var name for the list of db record Item-->
+    <h3>{{ row.meal }}</h3>
+    <p>{{ row.desc }}</p>
+    {% endfor %} {% endfor %}
   </body>
 </html>
