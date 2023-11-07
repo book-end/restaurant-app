@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-    <h1>Menu</h1>
+    <h1 id="menu-title">Menu</h1>
 
     <!--comes from views.py, get the uppercase meal category-->
     {% for meal in meals %}
@@ -13,10 +13,14 @@
     {% for row in item_list %}
     <!-- item_list is special var name for the list of db record Item-->
     {% if row.meal_category == meal.0 %} {% if row.status == 0 %}
-    <h3><del>{{ row.meal }}</del></h3>
+    <a class="unavailable-meal" href="{% url 'menu_item' row.pk %}"
+      ><h3><del>{{ row.meal }}</del></h3>
+    </a>
     <p>{{ row.desc }}</p>
     {% else %}
-    <h3>{{ row.meal }}</h3>
+    <a class="available-meal" href="{% url 'menu_item' row.pk %}"
+      ><h3>{{ row.meal }}</h3></a
+    >
     <p>{{ row.desc }}</p>
     {% endif %}
     <!-- inner if block-->
